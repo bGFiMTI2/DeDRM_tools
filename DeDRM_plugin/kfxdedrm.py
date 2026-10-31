@@ -814,14 +814,17 @@ def _atomic_replace(outpath, write_fn):
     os.close(fd)
     try:
         write_fn(tmp_path)
-        os.replace(tmp_path, outpath)
-    except Exception:
+        try:
+            os.replace(tmp_path, outpath)
+        except PermissionError:
+            shutil.copyfile(tmp_path, outpath)
+            os.unlink(tmp_path)
+    finally:
         if os.path.exists(tmp_path):
             try:
                 os.unlink(tmp_path)
             except OSError:
                 pass
-        raise
 
 
 class KFXContainerBook(KFXZipBook):

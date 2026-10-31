@@ -988,8 +988,8 @@ class DeDRM(FileTypePlugin):
                 raise DeDRMError("{0} v{1}: Ultimately failed to decrypt after {2:.1f} seconds. Read the FAQs at noDRM's repository: https://github.com/noDRM/DeDRM_tools/blob/master/FAQs.md".format(PLUGIN_NAME, PLUGIN_VERSION,time.time()-self.starttime))
 
         of = self.temporary_file(book.getBookExtension())
-        book.getFile(of.name)
         of.close()
+        book.getFile(of.name)
         book.cleanup()
         return of.name
 

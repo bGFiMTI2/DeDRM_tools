@@ -190,7 +190,7 @@ class ConfigWidget(QWidget):
         self._import_credentials_button = QPushButton("")
         self.import_creds_button = self._import_credentials_button
         self._import_credentials_button.setText("Add Kindle Serial / Secret...")
-        self._import_credentials_button.setToolTip("Enter a Kindle device serial/ID and/or account secret (or wrapped 1+... acsr string)")
+        self._import_credentials_button.setToolTip("Enter a Kindle device serial/ID and/or account secret (or wrapped acsr string)")
         self._import_credentials_button.clicked.connect(self.import_credentials_dialog)
         button_layout.addWidget(self._import_credentials_button)
 
@@ -415,7 +415,7 @@ class ConfigWidget(QWidget):
         if has_manual_secret and not _parse_manual(secret_text, False):
             _notify_error(
                 "Invalid Kindle Account Secret. Enter a 30 or 40-character account secret "
-                "or a wrapped 1+... acsr string."
+                "or a wrapped acsr string."
             )
             return (False, False) if _return_status else False
 
@@ -1739,7 +1739,7 @@ class AddPIDDialog(QDialog):
         data_group_box_layout.addLayout(key_group)
         key_group.addWidget(QLabel("PID:", self))
         self.key_ledit = QLineEdit("", self)
-        self.key_ledit.setToolTip("Enter a Mobipocket PID, or a Kindle Device ID. Mobipocket PIDs are 8 or 10 characters long. A Kindle Device ID is a device serial, optionally followed by the 30 or 40 character account secret (or wrapped 1+... acsr), and is 16, 32 or 40 characters long without the secret or 30, 40, 46, 56, 62, 70, 72 or 80 with it. Both are case-sensitive, so be sure to enter the upper and lower case letters unchanged.")
+        self.key_ledit.setToolTip("Enter a Mobipocket PID, or a Kindle Device ID. Mobipocket PIDs are 8 or 10 characters long. A Kindle Device ID is a device serial, optionally followed by the 30 or 40 character account secret (or wrapped acsr), and is 16, 32 or 40 characters long without the secret or 30, 40, 46, 56, 62, 70, 72 or 80 with it. Both are case-sensitive, so be sure to enter the upper and lower case letters unchanged.")
         key_group.addWidget(self.key_ledit)
 
         self.button_box = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
@@ -1823,7 +1823,7 @@ class ImportCredentialsDialog(QDialog):
         secret_group.addWidget(QLabel("Account Secret / ACSR:", self))
         self.secret_ledit = QLineEdit("", self)
         self.secret_ledit.setToolTip(
-            "Optional: Enter a 30 or 40-character account secret or a wrapped 1+... acsr string."
+            "Optional: Enter a 30 or 40-character account secret or a wrapped acsr string."
         )
         secret_group.addWidget(self.secret_ledit)
 
