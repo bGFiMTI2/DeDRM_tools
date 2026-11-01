@@ -1373,7 +1373,7 @@ MESSAGE_STREAM = b"dhbi934l3irje98rjnfne949fdnfankANSDW"
 # The device keeps the ACCOUNT_SECRET for its own DRM key derivation wrapped under this
 # key, in a file called acsr. The wrapping key is a firmware constant, not per-device.
 ACSR_WRAP_KEY = b"e35f5062f97cc8b1244f6f1a2414e31c"
-ACSR_WRAP_KEYS = [ACSR_WRAP_KEY] #maybe one day...
+ACSR_WRAP_KEYS = [ACSR_WRAP_KEY,b"ZK9WCSU44U6JTOr0FJQtMBue7XFxmTrY",b"dh2D9VlAwoSXF6r78VdaJsr79Kls8Hg3"] #maybe one day...
 def drilldown(t):
   """
   take a list of byte-strings, split it further and b64decode until done
