@@ -991,7 +991,7 @@ def scan_for_name(nm,book_root):
   for pos in candidates:
     for dirname in KINDLE_DEVICE_SETTING_DIRS:
       pth=os.path.join(book_root,pos,dirname,nm)
-      print("scanning {}".format(pth))
+      #print("scanning {}".format(pth))
       if os.path.isfile(pth):
         with open(pth, 'rb') as fh:
           return fh.read().strip()

@@ -1182,7 +1182,6 @@ def _voucher_id_bytes(voucher_id):
 # The device keeps the ACCOUNT_SECRET for its own DRM key derivation wrapped under this
 # key, in a file called acsr. The wrapping key is a firmware constant, not per-device.
 ACSR_WRAP_KEY = b"e35f5062f97cc8b1244f6f1a2414e31c"
-ACSR_WRAP_KEYS = [ACSR_WRAP_KEY] #maybe one day...
 # The two shapes an account secret has once it is out of its wrapping: the 40 character form
 # the app stores, and the 30 bytes a base build's base64 decode turns that form into. The
 # derivation accepts either.
@@ -1192,6 +1191,7 @@ ACCOUNT_SECRET_LENGTHS = (30, 40)
 _SECRET_SEPARATOR = re.compile(br'[\s,;]+')
 
 
+ACSR_WRAP_KEYS = [ACSR_WRAP_KEY,b"ZK9WCSU44U6JTOr0FJQtMBue7XFxmTrY",b"dh2D9VlAwoSXF6r78VdaJsr79Kls8Hg3"] #maybe one day...
 def drilldown(t):
   """
   take a list of byte-strings, split it further and b64decode until done
